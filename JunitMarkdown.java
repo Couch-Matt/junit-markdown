@@ -347,7 +347,7 @@ public class JunitMarkdown {
   }
 
   private static <T> T getAttr(Element element, String attrName, Function<String, T> parser, T defaultValue) {
-    String attrValue = element.getAttribute(attrName);
+    String attrValue = element.getAttribute(attrName).replace(",", "");
     return attrValue.isEmpty() ? defaultValue : parser.apply(attrValue);
   }
 
