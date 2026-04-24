@@ -339,16 +339,17 @@ public class JunitMarkdown {
   }
 
   private static int getIntAttr(Element element, String attrName) {
-    return getAttr(element, attrName, Integer::valueOf, 0);
+    return getAttr(element, attrName, s -> Integer.valueOf(s.replace(",","")), 0);
   }
 
   private static double getDoubleAttr(Element element, String attrName) {
-    return getAttr(element, attrName, Double::valueOf, 0d);
+    return getAttr(element, attrName, s -> Double.valueOf(s.replace(",","")), 0d);
   }
 
   private static <T> T getAttr(Element element, String attrName, Function<String, T> parser, T defaultValue) {
     String attrValue = element.getAttribute(attrName);
     return attrValue.isEmpty() ? defaultValue : parser.apply(attrValue);
+  }
   }
 
   static String firstLine(String s) {
