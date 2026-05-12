@@ -350,7 +350,6 @@ public class JunitMarkdown {
     String attrValue = element.getAttribute(attrName).replace(",", "");
     return attrValue.isEmpty() ? defaultValue : parser.apply(attrValue);
   }
-  }
 
   static String firstLine(String s) {
     try {
